@@ -8,7 +8,7 @@ describe 'user can access different pages when logged in or not logged in' do
   context 'when user is not logged in' do
     it 'user who is not logged in tries to view a wall, and is redirected to log in homepage' do
       visit "/#{user.id}"
-      expect(page).to have_current_path '/'
+      expect(page).to have_current_path '/post'
       expect(page).to have_button('Log in')
       expect(page).to have_button('Sign up')
       expect(page).not_to have_content(user.email)
