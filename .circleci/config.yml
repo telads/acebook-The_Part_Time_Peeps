@@ -6,24 +6,24 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
-      auth:
+        auth:
           username: ptpeeps
           password: returnofthepeeps
     executor: ruby/default
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
+        name: Which bundler?
+        command: bundle -v
       - ruby/bundle-install
   test:
     docker:
       - image: circleci/ruby:2.6.3-stretch-node
-      auth:
+        auth:
           username: ptpeeps
           password: returnofthepeeps
-      environment:
-        POSTGRES_DB: pgapp_test
+        environment:
+          POSTGRES_DB: pgapp_test
     environment:
       PGHOST: 127.0.0.1
       RAILS_ENV: test
