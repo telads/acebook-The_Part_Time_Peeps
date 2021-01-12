@@ -55,7 +55,7 @@ jobs:
       - ruby/install-deps
 
 
-          
+
   test:
     docker:
       - image: cimg/ruby:2.7-node
@@ -83,7 +83,10 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Database setup
-          command: bundle exec rails db:schema:load --trace
+          # command: bundle exec rails db:schema:load --trace
+          command: bundle exec rake db:create
+          command: bundle exec rake db:structure:load
+
       - ruby/rspec-test
       - store_test_results:
           path: test-results
