@@ -8,10 +8,6 @@ class PostsController < ApplicationController
     redirect_to "/#{current_user.id}"
   end
 
-  def index
-    @posts = Post.all
-  end
-
   def destroy
     @post = Post.find(params[:id])
     @post.destroy if @post.user == current_user
